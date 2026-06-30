@@ -6,8 +6,8 @@ services:
     env_file:
       - .env
     networks:
-      - infra_backend
+      - dev_backend
 
 networks:
-  infra_backend:
+  dev_backend:
     external: true

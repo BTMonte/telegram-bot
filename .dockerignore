@@ -1,0 +1,12 @@
+.env
+.git
+__pycache__/
+*.pyc
+*.log
+.cache
+.vscode/
+.venv/
+data/
+logs/
+.docker/
+.ssh/

@@ -7,13 +7,18 @@ pool = None
 async def connect_postgres():
     global pool
     pool = await asyncpg.create_pool(
-        host=config.POSTGRES_HOST,
-        port=config.POSTGRES_PORT,
-        user=config.POSTGRES_USER,
-        password=config.POSTGRES_PASSWORD,
-        database=config.POSTGRES_DB,
+        host=config.DB_HOST,
+        port=config.DB_PORT,
+        user=config.DB_USER,
+        password=config.DB_PASSWORD,
+        database=config.DB_NAME,
     )
     print("Postgres connected")
+
+
+async def fetch_one(query: str, *args):
+    async with pool.acquire() as conn:
+        return await conn.fetchrow(query, *args)
 
 
 async def create_user(telegram_id: int):
