@@ -39,3 +39,10 @@ async def get_user(telegram_id: int):
             "SELECT * FROM users WHERE telegram_id = $1",
             telegram_id
         )
+
+async def close_postgres():
+    global pool
+    if pool is not None:
+        await pool.close()
+        pool = None
+        print("Postgres disconnected")

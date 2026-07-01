@@ -1,3 +1,4 @@
 asyncpg
 redis
 python-dotenv
+python-telegram-bot>=20
